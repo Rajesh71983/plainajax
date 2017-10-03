@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ajax 2</title>
+</head>
+<body>
+	<form id="forme"><input type="text" name="name" id="name"><input type="submit" name="submit" value="submit"></form>
+
+</body>
+<script type="text/javascript">
+	document.getElementById('forme').addEventListener('submit',loadName);
+
+	function loadName(e) {
+		e.preventDefault();
+		var name = document.getElementById('name').value;
+		var params = 'name='+name;
+		var xhr = new XMLHttpRequest();
+
+		xhr.open('POST', 'process.php',true);
+		xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded')
+
+		xhr.onload = function(){
+			console.log(this.responseText)
+		}
+
+		xhr.send(params);
+	}
+</script>
+</html>
